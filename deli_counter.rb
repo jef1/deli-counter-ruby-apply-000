@@ -8,15 +8,19 @@ def line(array)
     puts "The line is currently empty."
   else
     line_array = []
-    line_array = array.collect{|x| " " + (array.index(x) + 1).to_s + ". #{x}"}
+    line_array = array.collect.with_index{|x,i| " " + (i + 1).to_s + ". #{x}"}
     puts "The line is currently:" + line_array.join("")
   end
 
 end
 
-def take_a_number(array, name)
-  array.push(name)
-  puts "Welcome, #{name}. You are number #{array.length.to_s} in line."
+counter = 0
+
+def take_a_number(array,counter)
+  counter = counter + 1
+  array.push(counter)
+  puts "You are number #{counter}."
+  return counter
 end
 
 def now_serving(array)
@@ -26,3 +30,13 @@ def now_serving(array)
     puts "Currently serving #{array.shift}."
   end
 end
+
+counter = take_a_number(katz_deli, counter)
+counter = take_a_number(katz_deli, counter)
+counter = take_a_number(katz_deli, counter)
+counter = take_a_number(katz_deli, counter)
+line(katz_deli)
+now_serving(katz_deli)
+line(katz_deli)
+counter = take_a_number(katz_deli, counter)
+line(katz_deli)
